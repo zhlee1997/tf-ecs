@@ -1,6 +1,6 @@
 resource "aws_security_group" "SG" {
   name        = "my-sg"
-  description = "Security group for ALB, allow port 80"
+  description = "Security group for ALB, allows port 80"
   vpc_id      = aws_vpc.vpc.id
 
   ingress {
