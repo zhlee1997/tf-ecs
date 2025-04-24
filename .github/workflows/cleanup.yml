@@ -35,6 +35,10 @@ jobs:
 
       - name: "Terraform Plan Destroy"
         run: terraform plan -destroy -out=tfplan-destroy
+        env:
+          TF_VAR_AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+          TF_VAR_AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+          TF_VAR_AWS_REGION: ${{ secrets.AWS_REGION }}
 
       - name: "Terraform Apply Destroy"
         run: terraform apply -auto-approve tfplan-destroy
