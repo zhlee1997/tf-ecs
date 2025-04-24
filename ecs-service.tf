@@ -19,6 +19,12 @@ resource "aws_ecs_service" "ecs_service" {
     container_port   = 80
   }
 
+  load_balancer {
+    target_group_arn = aws_alb_target_group.springboot_tg.arn
+    container_name   = "springboot-container"
+    container_port   = 8761
+  }
+
   network_configuration {
     subnets          = [aws_subnet.subnet1.id, aws_subnet.subnet2.id]
     security_groups  = [aws_security_group.SG.id]
