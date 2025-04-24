@@ -5,7 +5,7 @@ variable "AWS_REGION" {
 }
 
 variable "AWS_ACCESS_KEY" {
-  description = "AWS Access Key"
+  description = "AWS Acces Key"
   type        = string
   sensitive   = true
 }
