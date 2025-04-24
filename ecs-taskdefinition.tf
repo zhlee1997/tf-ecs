@@ -8,20 +8,20 @@ resource "aws_ecs_task_definition" "TD" {
   memory                   = 2048
 
   container_definitions = jsonencode([
-    {
-      name      = "main-container"
-      image     = "nginx:latest"
-      cpu       = 512
-      memory    = 1024
-      essential = true
-      portMappings = [
-        {
-          containerPort = 80
-          hostPort      = 80
-          protocol      = "tcp"
-        }
-      ]
-    },
+    # {
+    #   name      = "main-container"
+    #   image     = "nginx:latest"
+    #   cpu       = 512
+    #   memory    = 1024
+    #   essential = true
+    #   portMappings = [
+    #     {
+    #       containerPort = 80
+    #       hostPort      = 80
+    #       protocol      = "tcp"
+    #     }
+    #   ]
+    # },
     {
       name      = "springboot-container"
       image     = "565428532910.dkr.ecr.us-east-1.amazonaws.com/leezonghan19/link-app:latest"
