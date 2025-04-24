@@ -12,6 +12,14 @@ resource "aws_security_group" "SG" {
 
   }
 
+  ingress {
+    description = "Allow traffic on port 8761"
+    from_port   = 8761
+    to_port     = 8761
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     description = "Allow all outbound traffic"
     from_port   = 0

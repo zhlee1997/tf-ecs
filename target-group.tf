@@ -18,3 +18,11 @@ resource "aws_alb_target_group" "TG" {
   }
 
 }
+
+resource "aws_alb_target_group" "springboot_tg" {
+  name        = "springboot-tg"
+  port        = 8761
+  protocol    = "HTTP"
+  target_type = "ip"
+  vpc_id      = aws_vpc.vpc.id
+}

@@ -1,5 +1,6 @@
 resource "aws_ecs_task_definition" "TD" {
-  family                   = "nginx"
+  # family                   = "nginx"
+  family                   = "springboot-service"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   execution_role_arn       = aws_iam_role.iam-role.arn
@@ -8,8 +9,7 @@ resource "aws_ecs_task_definition" "TD" {
 
   container_definitions = jsonencode([
     {
-      name = "main-container"
-      # TODO: ECR Image
+      name      = "main-container"
       image     = "nginx:latest"
       cpu       = 1024
       memory    = 2048
@@ -18,6 +18,20 @@ resource "aws_ecs_task_definition" "TD" {
         {
           containerPort = 80
           hostPort      = 80
+          protocol      = "tcp"
+        }
+      ]
+    },
+    {
+      name      = "springboot-container"
+      image     = "565428532910.dkr.ecr.us-east-1.amazonaws.com/leezonghan19/link-app:latest"
+      cpu       = 1024
+      memory    = 2048
+      essential = true
+      portMappings = [
+        {
+          containerPort = 8761
+          hostPort      = 8761
           protocol      = "tcp"
         }
       ]
