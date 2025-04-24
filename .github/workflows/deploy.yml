@@ -65,11 +65,11 @@ jobs:
       # - name: 'tfsec'
       #   run: tfsec .
 
-      - name: Create terraform.tfvars
-        run: |
-          echo "AWS_ACCESS_KEY=\"n1-standard-1\"" > terraform.tfvars
-          echo "AWS_SECRET_KEY=\"n1-standard-1\"" >> terraform.tfvars
-          echo "AWS_REGION=\"us-east-1\"" >> terraform.tfvars
+      # - name: Create terraform.tfvars
+      #   run: |
+      #     echo "AWS_ACCESS_KEY=\"n1-standard-1\"" > terraform.tfvars
+      #     echo "AWS_SECRET_KEY=\"n1-standard-1\"" >> terraform.tfvars
+      #     echo "AWS_REGION=\"us-east-1\"" >> terraform.tfvars
 
       - name: "Terraform Plan"
         run: terraform plan -out=tfplan
