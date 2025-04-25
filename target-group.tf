@@ -26,3 +26,19 @@ resource "aws_alb_target_group" "springboot_tg" {
   target_type = "ip"
   vpc_id      = aws_vpc.vpc.id
 }
+
+resource "aws_alb_target_group" "config_service_tg" {
+  name        = "config-service-tg"
+  port        = 8888
+  protocol    = "HTTP"
+  target_type = "ip"
+  vpc_id      = aws_vpc.vpc.id
+}
+
+resource "aws_alb_target_group" "api_gateway_tg" {
+  name        = "api-gateway-tg"
+  port        = 8765
+  protocol    = "HTTP"
+  target_type = "ip"
+  vpc_id      = aws_vpc.vpc.id
+}

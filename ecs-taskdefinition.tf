@@ -25,8 +25,8 @@ resource "aws_ecs_task_definition" "TD" {
     {
       name      = "springboot-container"
       image     = "565428532910.dkr.ecr.us-east-1.amazonaws.com/leezonghan19/link-app:latest"
-      cpu       = 512
-      memory    = 1024
+      cpu       = 1024
+      memory    = 2048
       essential = true
       portMappings = [
         {
