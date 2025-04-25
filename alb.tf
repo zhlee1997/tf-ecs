@@ -38,3 +38,26 @@ resource "aws_alb_listener" "listener_8761" {
     target_group_arn = aws_alb_target_group.springboot_tg.arn
   }
 }
+
+resource "aws_alb_listener" "listener_8888" {
+  load_balancer_arn = aws_alb.alb.arn
+  port              = 8888
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_alb_target_group.config_service_tg.arn
+  }
+}
+
+
+resource "aws_alb_listener" "listener_8765" {
+  load_balancer_arn = aws_alb.alb.arn
+  port              = 8765
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_alb_target_group.api_gateway_tg.arn
+  }
+}
