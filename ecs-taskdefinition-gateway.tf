@@ -10,7 +10,7 @@ resource "aws_ecs_task_definition" "api_gateway_td" {
     {
       name = "api-gateway-container"
       // TDO: Update the image to your API Gateway image
-      image     = ""
+      image     = "565428532910.dkr.ecr.us-east-1.amazonaws.com/linkspark/api-gateway:latest"
       cpu       = 1024
       memory    = 2048
       essential = true

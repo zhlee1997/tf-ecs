@@ -10,7 +10,7 @@ resource "aws_ecs_task_definition" "config_service_td" {
     {
       name = "config-service-container"
       // TDO: Update the image to your Config Service image
-      image     = ""
+      image     = "565428532910.dkr.ecr.us-east-1.amazonaws.com/linkspark/config-service:latest"
       cpu       = 1024
       memory    = 2048
       essential = true
