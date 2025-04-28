@@ -5,13 +5,16 @@ resource "aws_alb_target_group" "TG" {
   target_type = "ip"
   vpc_id      = aws_vpc.vpc.id
 
-  #   health_check {
-  #     path                = "/"
-  #     interval            = 30
-  #     timeout             = 5
-  #     healthy_threshold   = 2
-  #     unhealthy_threshold = 2
-  #   }
+  health_check {
+    path                = "/actuator/health"
+    port                = "80"
+    protocol            = "HTTP"
+    matcher             = "200-299"
+    interval            = 30
+    timeout             = 5
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+  }
 
   tags = {
     Name = "my-target-group"
@@ -25,6 +28,17 @@ resource "aws_alb_target_group" "springboot_tg" {
   protocol    = "HTTP"
   target_type = "ip"
   vpc_id      = aws_vpc.vpc.id
+
+  health_check {
+    path                = "/actuator/health"
+    port                = "8761"
+    protocol            = "HTTP"
+    matcher             = "200-299"
+    interval            = 30
+    timeout             = 5
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+  }
 }
 
 resource "aws_alb_target_group" "config_service_tg" {
@@ -33,6 +47,17 @@ resource "aws_alb_target_group" "config_service_tg" {
   protocol    = "HTTP"
   target_type = "ip"
   vpc_id      = aws_vpc.vpc.id
+
+  health_check {
+    path                = "/actuator/health"
+    port                = "8888"
+    protocol            = "HTTP"
+    matcher             = "200-299"
+    interval            = 30
+    timeout             = 5
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+  }
 }
 
 resource "aws_alb_target_group" "api_gateway_tg" {
@@ -41,4 +66,15 @@ resource "aws_alb_target_group" "api_gateway_tg" {
   protocol    = "HTTP"
   target_type = "ip"
   vpc_id      = aws_vpc.vpc.id
+
+  health_check {
+    path                = "/actuator/health"
+    port                = "8765"
+    protocol            = "HTTP"
+    matcher             = "200-299"
+    interval            = 30
+    timeout             = 5
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+  }
 }
