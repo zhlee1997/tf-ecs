@@ -13,12 +13,6 @@ resource "aws_ecs_service" "ecs_service_api_gateway" {
 
   platform_version = "LATEST"
 
-  # load_balancer {
-  #   target_group_arn = aws_alb_target_group.TG.arn
-  #   container_name   = "main-container"
-  #   container_port   = 80
-  # }
-
   load_balancer {
     target_group_arn = aws_alb_target_group.api_gateway_tg.arn
     container_name   = "api-gateway-container"
