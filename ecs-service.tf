@@ -32,9 +32,7 @@ resource "aws_ecs_service" "ecs_service" {
   }
 
   service_registries {
-    registry_arn   = aws_service_discovery_service.ecs_service_discovery.arn
-    container_name = "springboot-container"
-    container_port = 8761
+    registry_arn = aws_service_discovery_service.ecs_service_discovery.arn
   }
 
   tags = {
