@@ -23,8 +23,9 @@ resource "aws_ecs_task_definition" "api_gateway_td" {
       ]
       environment = [
         {
-          name  = "EUREKA_URL"
-          value = "http://service-registry:8761/eureka"
+          name = "EUREKA_URL"
+          # value = "http://service-registry:8761/eureka"
+          value = "http://service-registry.services.local:8761/eureka"
         },
         {
           name  = "CONFIG_URL"
